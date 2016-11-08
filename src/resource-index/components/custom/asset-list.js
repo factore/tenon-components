@@ -28,14 +28,6 @@ export default (props) => {
 
   return (
     <div className="record-list">
-      <div className="asset-search-field">
-        <input
-          type="text"
-          value={query.q || ''}
-          onChange={(e) => updateQuery({ q: e.target.value, page: 1 })}
-          placeholder="Search" />
-      </div>
-
       <ul>
         <ReactCSSTransitionGroup
           transitionName="fade-"
