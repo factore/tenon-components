@@ -1,5 +1,3 @@
-/* global Tenon */
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -76,7 +74,7 @@ class Wrapper extends Component {
     };
 
     Object.keys(names).forEach((key) => {
-      component = resolvePath(names[key], Tenon.RI);
+      component = resolvePath(names[key], window.Tenon.RI);
       components[key] = component;
     });
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-Tenon.RI.AssetList = (props) => {
+export default (props) => {
   const { Record, LoadMoreButton }  = props.childComponents;
   const { deleteRecord, updateRecord, toggleExpandedRecord } = props.handlers;
   const { records, isFetching, query } = props.data;

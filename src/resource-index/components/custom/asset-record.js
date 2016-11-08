@@ -1,6 +1,6 @@
 import React from 'react';
 
-class AssetRecord extends React.Component {
+export default class AssetRecord extends React.Component {
   _placeAsset(e) {
     const { id, style_urls, display_name } = this.props.record;
 
@@ -37,5 +37,3 @@ class AssetRecord extends React.Component {
     );
   }
 }
-
-Tenon.RI.AssetRecord = AssetRecord;

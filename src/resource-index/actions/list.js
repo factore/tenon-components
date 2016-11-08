@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-fetch';
-import { toQueryString, debounce } from 'lodash';
+import { debounce } from 'lodash';
+import queryString from 'query-string';
 import * as types from '../constants/action-types';
 import Cookies from 'cookies-js';
 import { Flash } from 'tenon-features';
@@ -22,7 +23,7 @@ export const loadedRecords = (json, append = false) => {
 export const fetchRecords = (append = false) => {
   return function(dispatch, getState) {
     const state = getState().data;
-    const query = toQueryString(state.query);
+    const query = '?' + queryString.stringify(state.query);
 
     dispatch(loadRecords());
     return fetch(state.config.baseUri + query, { credentials: 'same-origin' })
@@ -52,14 +53,14 @@ const debouncedFetchRecords = debounce((dispatch, append = false) => {
   dispatch(fetchRecords(append));
 }, 500);
 
-const debouncedPushState = _.debounce((a, b, c) => {
+const debouncedPushState = debounce((a, b, c) => {
   history.pushState(a, b, c);
 }, 500);
 
 const updateQueryString = (query) => {
-  const queryString = toQueryString(query);
+  const stringifiedQuery = '?' + queryString.stringify(query);
 
-  debouncedPushState({ query: query }, queryString, queryString);
+  debouncedPushState({ query: query }, stringifiedQuery, stringifiedQuery);
 };
 
 const updateQueryCookie = (query, baseUri) => {
@@ -102,5 +103,3 @@ export const loadNextPage = () => {
     dispatch(updateQuery({ page: nextPage }, true));
   };
 };
-
-

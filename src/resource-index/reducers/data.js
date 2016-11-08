@@ -74,12 +74,14 @@ export default (state = initialState, action) => {
       records = action.records;
     }
 
+    const meta = action.meta || {};
+
     return {
       ...state,
       isFetching: false,
       records: records,
-      meta: action.meta,
-      pagination: action.meta.pagination
+      meta: meta,
+      pagination: meta.pagination || { 'current_page': 1, 'total_pages': 1 }
     };
   default:
     return state;

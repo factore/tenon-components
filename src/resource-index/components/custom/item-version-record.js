@@ -1,8 +1,7 @@
-/* global Tenon */
 import React from 'react';
 import classNames from 'classnames';
 
-Tenon.RI.ItemVersionRecord = ({ record }) => {
+export default ({ record }) => {
   const className = classNames({
     'record': true,
     'record--flat': true
